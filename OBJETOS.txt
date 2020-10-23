@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>OBJETOS</title>
+		<meta charset="utf-8">
+		<script>
+
+		//boton mostrar 1 
+				var miobjeto = {
+				nombre: "Juan",
+				edad: 30
+				};
+				function mostrar1(){
+				var mensaje = "Mi nombre es: " + miobjeto.nombre + "\r\n"; mensaje += "Tengo: " + miobjeto["edad"] + " años";
+				alert(mensaje + "\n \n Explicacion: En este codigo solo muestra el nombre y la edad de la persona. Ya que es un codigo sencillo en donde se especifica el  nombre del objeto  dentro de corchetes"); 
+				}
+			
+			//boton mostrar 2 
+			function mostrar2(){
+			var miobjeto = {
+			nombre: "Juan",
+			edad: 30,
+			mostrardatos: function() {
+			var mensaje = "Nombre: " + miobjeto.nombre + "\r\n";
+			mensaje += "Edad: " + miobjeto.edad;
+			alert(mensaje + "\n \n Explicación: En este código, el objeto también puede contener funciones, y las funciones dentro del objeto se denominan métodos y se les asignan funciones anónimas en lugar de valores. Muestra dos nombres diferentes, lo que significa que el código tiene dos funciones de visualización y modificación.");
+			},
+			cambiarnombre: function(nombrenuevo) {
+			miobjeto.nombre = nombrenuevo;
+			}
+			};
+			
+			miobjeto.mostrardatos(); // "Nombre: Juan Edad: 30"
+			miobjeto.cambiarnombre("José");
+			miobjeto.mostrardatos();
+			}
+		
+			//boton mostrar 3 
+			function mostrar3(){
+			var miobjeto = {
+			nombre: "Juan",
+			edad: 30,
+			mostrardatos: function() {
+			var mensaje = "Nombre: " + this.nombre + "\r\n";
+			mensaje += "Edad: " + this.edad;
+			},
+			cambiarnombre: function(nombrenuevo) {
+			var nombreviejo = this.nombre;
+			this.nombre = nombrenuevo;
+			return nombreviejo;
+			} };
+			var anterior = miobjeto.cambiarnombre("José");
+			alert("El nombre anterior era: " + anterior  + "\n Explicación: En este codigo se usa la palabra this, para referenciar al objeto, en donde la instruccion se este ejecutando, si se hace fuera del objeto se estaría referenciando el objeto global. "); 
+			}
+		
+		
+			//boton mostrar 4
+			function mostrar4(){
+			var constructor = function() {
+			var obj = {
+			nombre: "Juan",
+			edad: 30,
+			mostrarnombre: function() {
+			alert(this.nombre + "\n Explicación: En este codigo se usa un constructor, es decir que se asigna una funcion anonima a la variable constructor, dentro de la funcion de crea un objeto y se devuelve la instrucción  return. El objeto que devuelve funcion se almacena en una variable y se ejecuta su método.");
+			},
+			cambiarnombre: function(nombrenuevo) {
+			this.nombre = nombrenuevo;	
+			}
+			};
+			return obj;
+			};
+			var empleado = constructor();
+			empleado.mostrarnombre(); // “Juan”
+			}
+			
+			//boton mostrar 5
+			function mostrar5(){
+			var constructor = function(nombreinicial) {
+			var obj = {
+			nombre: nombreinicial,
+			edad: 30,
+			mostrarnombre: function() {
+			alert(this.nombre + "\n Explicacion: Solo muestra el nombre Juan, ya que solo envia valores iniciales al constructor");
+			},
+			cambiarnombre: function(nombrenuevo) {
+			this.nombre = nombrenuevo;
+			}
+			};
+			return obj;
+			};
+			var empleado = constructor("Juan");
+			empleado.mostrarnombre(); // “Juan”
+			}
+		
+			// boton mostrar 6
+			function mostrar6 (){
+			var constructor = function(nombreinicial) {
+			var obj = {
+			nombre: nombreinicial,
+			edad: 30,
+			mostrarnombre: function() {
+			alert(this.nombre);
+			},
+			cambiarnombre: function(nombrenuevo) {
+			this.nombre = nombrenuevo;
+			} };
+			return obj;
+			};
+			var empleado1 = constructor("Juan");
+			var empleado2 = constructor("Roberto");
+			var empleado3 = constructor("Arturo");
+			alert(empleado1.nombre + ", " + empleado2.nombre + ", " + empleado3.nombre + "\n Explicación: Muestra múltiples objetos con el mismo constructor. Es decir cada que se llama la funcion constructor, se crea un nuevo objeto y se puede almacenar diferentes valores en cada uno. ");
+			}
+		
+			// boton mostrar 7
+			function mostrar7 () {
+			var constructor = function() {
+			var nombre = "Juan";
+			var edad = 30;
+			var obj = {
+			mostrarnombre: function() {
+			alert(nombre + "\n Explicación: Las propiedades del objeto se declararon como variables de la funcion que se esta devolviendo el objeto. Como tal el objeto  será el unico que tendrá acceso a ellas.  Ya que no se podrá modificar los valores de esas variables desde otras instrucciones.");
+			},
+			cambiarnombre: function(nombrenuevo) {
+			nombre = nombrenuevo;
+			} };
+			return obj;
+			};
+			var empleado = constructor();
+			empleado.mostrarnombre(); // “Juan”
+			}
+		
+			//boton mostrar 8
+			function mostrar8(){
+			function MiObjeto() {
+			this.nombre = "Juan";
+			this.edad = 30;
+			this.mostrarnombre = function(){
+			alert(this.nombre + "\n Explicación: Aqui con el operador new, el objeto  se define mediante una funcion y luego se llama con el operador new para crear un objeto. ");
+			};
+			this.cambiarnombre = function(nombrenuevo){
+			this.nombre = nombrenuevo;		
+			};
+			}
+			var empleado = new MiObjeto();
+			empleado.mostrarnombre(); // “Juan”
+			}
+		
+			//boton mostrar 9
+			function mostrar9(){
+			function MiObjeto(nombreinicial, edadinicial){
+			this.nombre = nombreinicial;
+			this.edad = edadinicial;
+			this.mostrarnombre = function(){
+			alert(this.nombre + "\n Explicación: En este  codigo solo se proorciona valores iniciales. ");
+			};
+			this.cambiarnombre = function(nombrenuevo){
+			this.nombre = nombrenuevo;
+			};
+			}
+			var empleado = new MiObjeto("Roberto", 55);
+			empleado.mostrarnombre(); // “Roberto”
+			}
+				
+				</script>
+	</head>
+	<body>
+		<h2>Declarando objetos</h2><br>
+		
+		<input type="submit" value="Mensaje1" onclick="mostrar1()"> 
+		<input type="submit" value="Mensaje2" onclick="mostrar2()">
+		<input type="submit" value="Mensaje3" onclick="mostrar3()">
+		<input type="submit" value="Mensaje4" onclick="mostrar4()">
+		<input type="submit" value="Mensaje5" onclick="mostrar5()">
+		<input type="submit" value="Mensaje6" onclick="mostrar6()">
+		<input type="submit" value="Mensaje7" onclick="mostrar7()">
+		<input type="submit" value="Mensaje8" onclick="mostrar8()">
+		<input type="submit" value="Mensaje9" onclick="mostrar9()">
+
+	</body>	
+</html>	
+
+
+
+
+
